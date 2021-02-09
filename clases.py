@@ -4,7 +4,7 @@ import math
 
 class Estacion:
 
-    def __init__(self, identificador, name = None ,  num_bicis = None , address = None , longitude = None , latitude= None ):
+    def __init__(self,  name = None ,  identificador = 0, num_bicis = None , address = None , longitude = None , latitude= None ):
         self.name = name
         self.identificador = identificador
         self.num_bicis = num_bicis
@@ -43,16 +43,23 @@ class ComunidadMadrid:
     def busca_estacion(self, estacion, tipo_busqueda):
 
         if tipo_busqueda == 'id':
+            estacionResp = None
+
             for item in self.estaciones:
               if item.identificador == estacion.identificador:
-                  return item
-              else:
-                  return None
+                  estacionResp = item
+                  break
+
+            return estacionResp
         else:
+            estacionResp = None
+
             for item in self.estaciones:
-              if item.name.lower() == estacion.name.lower():
-                  return item
-              else:
-                  return None
+              if estacion.name.lower() in item.name.lower():
+                  estacionResp = item
+                  break
+
+            return estacionResp
+
 
 
