@@ -42,24 +42,22 @@ class ComunidadMadrid:
 
     def busca_estacion(self, estacion, tipo_busqueda):
 
+        estacionResp = None
         if tipo_busqueda == 'id':
-            estacionResp = None
 
             for item in self.estaciones:
               if item.identificador == estacion.identificador:
                   estacionResp = item
                   break
 
-            return estacionResp
         else:
-            estacionResp = None
 
             for item in self.estaciones:
               if estacion.name.lower() in item.name.lower():
                   estacionResp = item
                   break
 
-            return estacionResp
+        return estacionResp
 
 
 
