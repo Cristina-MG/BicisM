@@ -17,44 +17,50 @@ while True:
     print("1. Busca estacion (nombre)")
     print("2. Calcula distancia (entre ids)")
     print("3. Salir del programa")
+    try:
+        opcion = int(input("Introduzca una opción del menú "))
 
-    opcion = int(input("Introduzca una opción del menú "))
+        estacion = None
 
-    estacion = None
+        if opcion == 3:
 
-    if opcion == 3:
+            break
 
-        break
+        elif opcion == 1:
 
-    elif opcion == 1:
+            respNombre = input("Introduce el nombre de la estación ")
 
-        respNombre = input("Introduce el nombre de la estación ")
+            estacion = Estacion(name = respNombre)
+            estacion = comunidad.busca_estacion(estacion,'name')
 
-        estacion = Estacion(name = respNombre)
-        estacion = comunidad.busca_estacion(estacion,'name')
+            if estacion:
+                print('Nombre:',estacion.name)
+                print('id:', estacion.identificador)
+                print('Número de bicis:', estacion.num_bicis)
+                print('Direccion:', estacion.addres)
+                print('Longitud geográfica:', estacion.longitude)
+                print('Latitud geográfica:', estacion.latitude,'\n')
 
-        if estacion:
-            print('Nombre:',estacion.name)
-            print('id:', estacion.identificador)
-            print('Número de bicis:', estacion.num_bicis)
-            print('Direccion:', estacion.addres)
-            print('Longitud geográfica:', estacion.longitude)
-            print('Latitud geográfica:', estacion.latitude,'\n')
+            else:
 
+                print("No se han obtenido resultados\n")
+
+        elif opcion == 2:
+            try:
+                est1 = int(input("Introduce el indentificador (número entero) de la primera estación "))
+                est2 = int(input("Introduce el indentificador (número entero) de la segunda estación "))
+
+                est1 = Estacion(identificador = est1)
+                est2 = Estacion(identificador = est2)
+
+                est1 = comunidad.busca_estacion(est1,'id')
+                est2 = comunidad.busca_estacion(est2,'id')
+
+                print("La distancia entre", est1.name, "y", est2.name,"es:")
+                print(est1.distancia(est2.latitude, est2.longitude),'\n')
+            except:
+                print("Hay que introducir un número entero para identificar la estación ")
         else:
-
-            print("No se han obtenido resultados\n")
-
-    elif opcion == 2:
-
-        est1 = int(input("Introduce el indentificador de la primera estación "))
-        est2 = int(input("Introduce el indentificador de la segunda estación "))
-
-        est1 = Estacion(identificador = est1)
-        est2 = Estacion(identificador = est2)
-
-        est1 = comunidad.busca_estacion(est1,'id')
-        est2 = comunidad.busca_estacion(est2,'id')
-
-        print("La distancia entre", est1.name, "y", est2.name,"es:")
-        print(est1.distancia(est2.latitude, est2.longitude),'\n')
+            print("Hay que introducir un número entero entre el 1 y el 3 para ejecutar una opción del menú ")
+    except:
+        print("Hay que introducir un número entero entre el 1 y el 3 para ejecutar una opción del menú ")
