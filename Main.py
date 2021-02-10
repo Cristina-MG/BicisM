@@ -17,6 +17,7 @@ while True:
     print("1. Busca estacion (nombre)")
     print("2. Calcula distancia (entre ids)")
     print("3. Salir del programa")
+
     try:
         opcion = int(input("Introduzca una opción del menú entre 1 y 3 "))
 
@@ -50,14 +51,9 @@ while True:
                 est1 = int(input("Introduce el indentificador (número entero) de la primera estación "))
                 est2 = int(input("Introduce el indentificador (número entero) de la segunda estación "))
 
-                est1 = Estacion(identificador = est1)
-                est2 = Estacion(identificador = est2)
+                print("La distancia entre estación con id", est1, "y", est2, "es:")
+                print(funciones.dist_estaciones(est1, est2, comunidad))
 
-                est1 = comunidad.busca_estacion(est1,'id')
-                est2 = comunidad.busca_estacion(est2,'id')
-
-                print("La distancia entre", est1.name, "y", est2.name,"es:")
-                print(est1.distancia(est2.latitude, est2.longitude),'\n')
             except:
                 print("Hay que introducir un número entero para identificar la estación ")
         else:
