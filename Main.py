@@ -18,7 +18,7 @@ while True:
     print("2. Calcula distancia (entre ids)")
     print("3. Salir del programa")
     try:
-        opcion = int(input("Introduzca una opción del menú "))
+        opcion = int(input("Introduzca una opción del menú entre 1 y 3 "))
 
         estacion = None
 

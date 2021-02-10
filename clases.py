@@ -1,6 +1,6 @@
 
 import math
-
+import unidecode
 
 class Estacion:
 
@@ -53,7 +53,7 @@ class ComunidadMadrid:
         else:
 
             for item in self.estaciones:
-              if estacion.name.lower() in item.name.lower():
+              if unidecode.unidecode(estacion.name.lower()) in unidecode.unidecode(item.name.lower()):
                   estacionResp = item
                   break
 
